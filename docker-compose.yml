@@ -1,0 +1,16 @@
+version: "3"
+services:
+  rabbitmq3:
+      image: rabbitmq:3-management
+      environment:
+        RABBITMQ_ERALANG_COOKIE: 'secret cookie here'
+      ports:
+        - 15672:1000
+  rabbitmqsend:
+      build: RabbitMQPracticeService/
+      ports:
+        - 9080:9080
+  rabbitmqreceive:
+      build: RabbitMQReceiveService
+      ports:
+        - 9090:9090
